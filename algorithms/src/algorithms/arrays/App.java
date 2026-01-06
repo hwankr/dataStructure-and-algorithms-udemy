@@ -13,8 +13,8 @@ public class App {
 //		names.add("Adam");
 //		names.add("Ana");
 //		
-////		names.remove(0);
-////		System.out.println(names.get(0));
+//		names.remove(0);
+//		System.out.println(names.get(0));
 //		
 //		System.out.println(names.size());
 //		for (String name: names) {
@@ -40,10 +40,14 @@ public class App {
 //			}
 //		}
 		
-		int[] nums = {1, 2, 3, 4};
+//		int[] nums = {1, 2, 3, 4};
+//		ReverseArrayProblem problem = new ReverseArrayProblem();
+//		System.out.println(Arrays.toString(problem.solve(nums)));
 		
-		ReverseArrayProblem problem = new ReverseArrayProblem();
+		char[] s1 = "restful".toCharArray();
+		char[] s2 = "fluster".toCharArray();
+		AnagramProblem problem = new AnagramProblem();
+		System.out.println(problem.solve(s1, s2));
 		
-		System.out.println(Arrays.toString(problem.solve(nums)));
 	}
 }
