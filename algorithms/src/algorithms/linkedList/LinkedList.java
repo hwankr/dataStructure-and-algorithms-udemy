@@ -1,6 +1,7 @@
 package algorithms.linkedList;
 
 public class LinkedList<T extends Comparable<T>> implements List<T> {
+	
 	private Node<T> root; 
 	private int numOfItems;
 	
@@ -10,6 +11,7 @@ public class LinkedList<T extends Comparable<T>> implements List<T> {
 			 root = new Node<>(data);
 		 } else {
 			 insertBeginning(data);
+//			 insertEnd(data, root);
 		 }
 		
 	}
@@ -33,8 +35,28 @@ public class LinkedList<T extends Comparable<T>> implements List<T> {
 
 	@Override
 	public void remove(T data) {
+		 if (root == null) return;
 		 
+		 if (root.getData().compareTo(data) == 0) {
+			 root = root.getNextNode();
+		 } else {
+			 remove(data, root, root.getNextNode());
+		 }
 		
+	}
+
+	private void remove(T data, Node<T> previousNode, Node<T> actualNode) {
+		while (actualNode != null) {
+			if (actualNode.getData().compareTo(data) == 0) {
+				numOfItems--;
+				previousNode.setNextNode(actualNode.getNextNode());
+				actualNode = null;
+				return;
+			}
+			
+			previousNode = actualNode;
+			actualNode = actualNode.getNextNode();
+		}
 	}
 
 	@Override
