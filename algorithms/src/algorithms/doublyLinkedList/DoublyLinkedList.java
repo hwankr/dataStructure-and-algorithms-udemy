@@ -7,6 +7,24 @@ public class DoublyLinkedList<T> {
 	private Node<T> tail;
 	private int size;
 	
+	public void traverseForawrd() {
+		Node<T> actual = this.head;
+		
+		while (actual != null) {
+			System.out.print(actual.getData() + " <-> ");
+			actual = actual.getNext();
+		}
+	}
+	
+	public void traverseBackward() {
+		Node<T> actual = this.tail;
+		
+		while (actual != null) {
+			System.out.print(actual.getData() + " <-> ");
+			actual = actual.getPrevious();
+		}
+	}
+	
 	public T getFirst() {
 		if (this.head == null) 
 			throw new RuntimeException("List is empty");
@@ -20,7 +38,7 @@ public class DoublyLinkedList<T> {
 			this.tail = null;
 		}
 		
-		this.size--;
+		this.size--; 
 		
 		return removeNode;
 	}
