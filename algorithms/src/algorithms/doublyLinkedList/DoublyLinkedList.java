@@ -25,6 +25,8 @@ public class DoublyLinkedList<T> {
 		}
 	}
 	
+	
+	
 	public T getFirst() {
 		if (this.head == null) 
 			throw new RuntimeException("List is empty");
