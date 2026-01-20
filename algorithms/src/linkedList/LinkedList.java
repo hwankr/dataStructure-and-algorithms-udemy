@@ -1,4 +1,4 @@
-package algorithms.linkedList;
+package linkedList;
 
 public class LinkedList<T extends Comparable<T>> implements List<T> {
 	
@@ -23,6 +23,7 @@ public class LinkedList<T extends Comparable<T>> implements List<T> {
 	}
 	
 	// 마지막 노드를 찾아야 함 O(N)
+	@SuppressWarnings("unused")
 	private void insertEnd(T data, Node<T> node) {
  		if (node.getNextNode() != null) {
  			insertEnd(data, node.getNextNode());

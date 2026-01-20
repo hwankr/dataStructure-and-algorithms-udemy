@@ -1,4 +1,4 @@
-package algorithms.arrays;
+package arrays;
 
 public class ReverseArrayProblem {
 	public int[] solve(int[] nums) {

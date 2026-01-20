@@ -1,18 +1,25 @@
-package algorithms.linkedList;
+package linkedList;
 
-public class ReverseLinkedList {
+public class FindingMiddleNode {
 	public static void main(String[] args) {
-		ReverseLinkedList ex = new ReverseLinkedList();
+		FindingMiddleNode ex = new FindingMiddleNode();
 		
 		List list1 = ex.new LinkedList();
-		
 		list1.insert(4);
 		list1.insert(3);
 		list1.insert(2);
 		list1.insert(1);
-		list1.reverse();
-		list1.traverse();
-	}
+//		list1.traverse();
+		System.out.println(list1.getMiddleNode());
+ 		
+		List list2 = ex.new LinkedList();
+		list2.insert(5);
+		list2.insert(4);
+		list2.insert(3);
+		list2.insert(2);
+		list2.insert(1);
+		System.out.println(list2.getMiddleNode());
+ 	}
 	
 	class LinkedList implements List {
 
@@ -21,38 +28,19 @@ public class ReverseLinkedList {
 		private int numOfItems;
 		
 		@Override
-		public void reverse() {
-			Node prev = null;
-			Node current = root;
-			Node next;
+		public Node getMiddleNode() {
+			Node ptrNode = root;
+			Node middleNode = root;
+			// 1 2 3 4 5
 			
-			while (current != null) {
-				next = current.getNextNode();
-				current.setNextNode(prev);
-				prev = current;
-				current = next;
+			
+			while (ptrNode != null && ptrNode.getNextNode() != null) {
+				ptrNode = ptrNode.getNextNode().getNextNode();
+				middleNode = middleNode.getNextNode();
 			}
 			
-			this.root = prev;
-			
-		}
-		
-		@Override
-		public Node get(int index) {
-		    
-		    int counter = 0;
-		    Node node = this.root;
-		    
-		    while(node != null) {
-		        if(index == counter)
-		            return node;
-		        
-		        counter++;
-		        node = node.getNextNode();
-		    }
-		    
-		    return null;
-		}
+			return middleNode;
+		} 
 		
 		@Override
 		public void insert(int data) {
@@ -63,7 +51,7 @@ public class ReverseLinkedList {
 			} else {
 				// we know that this is not the first item in the linked list
 				insertBeginning(data);
-			}	
+			}
 			numOfItems++;
 		}
 
@@ -108,8 +96,7 @@ public class ReverseLinkedList {
 	}
 
 	interface List {
-	    public Node get(int index);
-	    public void reverse();
+	    public Node getMiddleNode();
 	    public void insert(int data);
 	    public void traverse();
 	    public int size();
@@ -146,3 +133,4 @@ public class ReverseLinkedList {
 	    }
 	}
 }
+

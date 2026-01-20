@@ -1,4 +1,4 @@
-package algorithms.doublyLinkedList;
+package doublyLinkedList;
 
 public class App {
 

@@ -1,25 +1,18 @@
-package algorithms.linkedList;
+package linkedList;
 
-public class FindingMiddleNode {
+public class ReverseLinkedList {
 	public static void main(String[] args) {
-		FindingMiddleNode ex = new FindingMiddleNode();
+		ReverseLinkedList ex = new ReverseLinkedList();
 		
 		List list1 = ex.new LinkedList();
+		
 		list1.insert(4);
 		list1.insert(3);
 		list1.insert(2);
 		list1.insert(1);
-//		list1.traverse();
-		System.out.println(list1.getMiddleNode());
- 		
-		List list2 = ex.new LinkedList();
-		list2.insert(5);
-		list2.insert(4);
-		list2.insert(3);
-		list2.insert(2);
-		list2.insert(1);
-		System.out.println(list2.getMiddleNode());
- 	}
+		list1.reverse();
+		list1.traverse();
+	}
 	
 	class LinkedList implements List {
 
@@ -28,19 +21,37 @@ public class FindingMiddleNode {
 		private int numOfItems;
 		
 		@Override
-		public Node getMiddleNode() {
-			Node ptrNode = root;
-			Node middleNode = root;
-			// 1 2 3 4 5
+		public void reverse() {
+			Node prev = null;
+			Node current = root;
+			Node next;
 			
-			
-			while (ptrNode != null && ptrNode.getNextNode() != null) {
-				ptrNode = ptrNode.getNextNode().getNextNode();
-				middleNode = middleNode.getNextNode();
+			while (current != null) {
+				next = current.getNextNode();
+				current.setNextNode(prev);
+				prev = current;
+				current = next;
 			}
 			
-			return middleNode;
-		} 
+			this.root = prev;
+		}
+		
+		@Override
+		public Node get(int index) {
+		    
+		    int counter = 0;
+		    Node node = this.root;
+		    
+		    while(node != null) {
+		        if(index == counter)
+		            return node;
+		        
+		        counter++;
+		        node = node.getNextNode();
+		    }
+		    
+		    return null;
+		}
 		
 		@Override
 		public void insert(int data) {
@@ -51,7 +62,7 @@ public class FindingMiddleNode {
 			} else {
 				// we know that this is not the first item in the linked list
 				insertBeginning(data);
-			}
+			}	
 			numOfItems++;
 		}
 
@@ -64,6 +75,7 @@ public class FindingMiddleNode {
 		
 		// because we have to start with the root node
 		// first we have to find the last node in O(N)
+		@SuppressWarnings("unused")
 		private void insertEnd(int data, Node node) {
 			
 			// this is when we keep looking for the last node O(N)
@@ -96,7 +108,8 @@ public class FindingMiddleNode {
 	}
 
 	interface List {
-	    public Node getMiddleNode();
+	    public Node get(int index);
+	    public void reverse();
 	    public void insert(int data);
 	    public void traverse();
 	    public int size();
@@ -133,4 +146,3 @@ public class FindingMiddleNode {
 	    }
 	}
 }
-

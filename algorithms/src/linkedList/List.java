@@ -1,4 +1,4 @@
-package algorithms.linkedList;
+package linkedList;
 
 public interface List<T> {
 	public void insert(T data);

@@ -1,4 +1,4 @@
-package algorithms.linkedList;
+package linkedList;
 
 public class App {
 	public static void main(String[] args) {

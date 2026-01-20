@@ -1,4 +1,4 @@
-package algorithms.linkedList;
+package linkedList;
 
 public class Node<T extends Comparable<T>> {
 	private T data;
